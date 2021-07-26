@@ -1,0 +1,197 @@
+LENGUAJE-KEYMAPS
+
+#echo "${locale} UTF-8" > /etc/locale.gen
+#locale-gen
+#echo LANG=es_ES.UTF-8 > /etc/locale.conf
+#export LANG=es_ES.UTF-8
+
+Keymap=latam
+
+
+LLAVES, MIRROR LIST
+
+pacman -Syy
+pacman -Sy archlinux-keyring --noconfirm 
+
+reflector --verbose --latest 5 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+
+
+INSTALAR SYSTEMA BASE
+
+pacstrap /mnt base git linux linux-firmware nano intel-ucode btrfs-progs reflector python3 python rsync
+
+
+UTILIDADES
+
+pacman -S grub grub-btrfs efibootmgr linux linux-headers mkinitcpio acpi acpi_call avahi xdg-utils dhcpcd networkmanager iwd net-tools ifplugd iw wireless_tools wpa_supplicant dialog wireless-regdb android-file-transfer android-tools android-udev libmtp libcddb gvfs gvfs-afc gvfs-smb gvfs-gphoto2 gvfs-mtp gvfs-goa gvfs-nfs gvfs-google gst-libav dosfstools jfsutils f2fs-tools btrfs-progs exfat-utils ntfs-3g udftools polkit gpart mtools wget neofetch lsb-release xdg-user-dirs nfs-utils inetutils dnsutils pipewire pipewire-alsa pipewire-pulse pipewire-jack lib32-pipewire lib32-pipewire-jack gst-plugin-pipewire pavucontrol alsa-card-profiles alsa-utils gnu-free-fonts ttf-hack ttf-inconsolata gnome-font-viewer ffmpeg aom libde265 x265 x264 libmpeg2 xvidcore libtheora libvpx base-devel schroedinger sdl gstreamer gst-plugins-bad gst-plugins-base gst-plugins-base-libs gst-plugins-good gst-plugins-ugly xine-lib libdvdcss libdvdread dvd+rw-tools lame jasper libmng libraw libkdcraw vcdimager acpid terminus-font xf86-input-synaptics xf86-input-libinput xorg-xinput nss-mdns os-prober ntp usb_modeswitch usbutils which tlp bridge-utils dnsmasq openbsd-netcat ipset firewalld sof-firmware gnu-free-fonts ttf-hack ttf-inconsolata gnome-font-viewer dhcpcd networkmanager iwd net-tools ifplugd iw wireless_tools wpa_supplicant dialog wireless-regdb bluez bluez-utils xf86-video-amdgpu mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon mesa-vdpau libva-mesa-driver lib32-mesa-vdpau lib32-libva-mesa-driver libva-vdpau-driver libvdpau-va-gl libva-utils vdpauinfo opencl-mesa clinfo ocl-icd lib32-ocl-icd opencl-headers
+
+ 
+ESCRITORIO
+
+:XORG
+
+pacman -S xorg xorg-apps xorg-xinit xorg-twm xdg-desktop-portal-kde kdialog kfind
+
+:PLSMA
+
+pacman -S plasma plasma-nm plasma-pa kdeplasma-addons dolphin konsole sddm libxcb qt5-virtualkeyboard ffmpegthumbs ffmpegthumbnailer kscreen powerdevil kdegraphics-thumbnailers libgsf kdeconnect
+systemctl enable sddm
+
+
+TECLADO XORG
+
+ keyboard="latam"
+            keymap="latam"
+touch /mnt/etc/X11/xorg.conf.d/00-keyboard.conf
+	echo -e 'Section "InputClass"' > /mnt/etc/X11/xorg.conf.d/00-keyboard.conf
+	echo -e 'Identifier "system-keyboard"' >> /mnt/etc/X11/xorg.conf.d/00-keyboard.conf
+	echo -e 'MatchIsKeyboard "on"' >> /mnt/etc/X11/xorg.conf.d/00-keyboard.conf
+	echo -e 'Option "XkbLayout" "latam"' >> /mnt/etc/X11/xorg.conf.d/00-keyboard.conf
+	echo -e 'EndSection' >> /mnt/etc/X11/xorg.conf.d/00-keyboard.conf
+	echo ""
+	cat /mnt/etc/X11/xorg.conf.d/00-keyboard.conf
+	
+
+--noconfirm --needed
+
+
+ACTIVAR PIPEWIRE CHROME
+chrome://flags/#enable-webrtc-pipewire-capturer
+
+
+
+
+
+
+
+
+
+systemctl enable dhcpcd NetworkManager
+systemctl enable NetworkManager
+systemctl enable bluetooth
+systemctl enable sshd
+systemctl enable avahi-daemon
+systemctl enable tlp # You can comment this command out if you didn't install tlp, see above
+systemctl enable reflector.timer
+systemctl enable fstrim.timer
+systemctl enable libvirtd
+systemctl enable firewalld
+systemctl enable acpid
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
